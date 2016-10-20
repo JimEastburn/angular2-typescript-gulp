@@ -19,8 +19,8 @@ execute "build dist with gulp" do
   cwd release_path
   user "deploy"
   environment "NODE_ENV" => 'production'
-  command "cd /srv/www/angular2appcorgibytes/node_modules/.bin/"
-  command "gulp build"
+  command "cd /srv/www/angular2appcorgibytes/node_modules/gulp/"
+  command "gulp.1 build"
 end
 
 execute "ensure config directory exists" do
