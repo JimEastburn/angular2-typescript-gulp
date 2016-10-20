@@ -12,7 +12,7 @@ execute "typings install" do
   cwd release_path
   user "deploy"
   environment "NODE_ENV" => 'production'
-  command "/srv/www/pulse/current/node_modules/.bin/typings install"
+  command "/srv/www/angular2-typescript-gulp/node_modules/.bin/typings install"
 end
 
 execute "build dist with gulp" do
