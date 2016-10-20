@@ -19,13 +19,13 @@ execute "build dist with gulp" do
   cwd release_path
   user "deploy"
   environment "NODE_ENV" => 'production'
-  command "gulp build"
+  command "/srv/www/angular2appcorgibytes/current/node_modules/.bin/gulp build"
 end
 
 execute "ensure config directory exists" do
   cwd release_path
   user "root"
-  command "mkdir -p /var/www/angular2-typescript-gulp"
+  command "mkdir -p /var/www/angular2appcorgibytes"
 end
 
 execute "set the config file" do
@@ -38,19 +38,19 @@ server {
   server_name  127.0.0.1;
   access_log  /var/log/nginx/localhost.access.log;
   location / {
-    root   /var/www/angular2-typescript-gulp;
+    root   /var/www/angular2appcorgibytes;
     index  index.html index.htm;
   }
 }
   enable_site
 
-  command "echo '#{enable_site}' > /etc/nginx/sites-enabled/angular2-typescript-gulp"
+  command "echo '#{enable_site}' > /etc/nginx/sites-enabled/angular2appcorgibytes"
 end
 
 execute "copy gulp generated dist directory to nginx" do
   cwd release_path
   user "root"
-  command "cp -Rf /srv/www/angular2-typescript-gulp/build/* /var/www/angular2-typescript-gulp"
+  command "cp -Rf /srv/www/angular2appcorgibytes/current/build/* /var/www/angular2appcorgibytes"
 end
 
 execute "restart nginx" do
